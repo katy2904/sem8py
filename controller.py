@@ -23,7 +23,7 @@ def pushbutton():
                 UI.resume()
             case 4:
                 log.log_data('Выход из программы')
-                quit()
+                exit()
 
 
 

@@ -1,4 +1,4 @@
-import pandas as pd
+import logger as log
 import operation as op
 
 def get_data(text):
@@ -20,6 +20,7 @@ def choice():
 
 def data_basic():
     pid = op.ID('basic.csv')
+    view_data(pid)
     basic_dict= {'ID': [pid],
                  'Фамилия': [input('Фамилия: ')], 'Имя': [input('Имя: ')], 'Отчество': [input('Отчество: ')],
                  'Дата рождения': [input('Дата рождения: ')], 'Телефон': [input('Телефон: ')],
@@ -29,7 +30,7 @@ def data_basic():
 def data_job():
     pid = op.ID('job.csv')
     job_dict = {'ID': [pid], 'Дата приема на работу': [input('Дата приема на работу: ')],
-                'Подразжеление(отдел)': [input('Подразжеление(отдел): ')],
+                'Подразделение(отдел)': [input('Подразделение(отдел): ')],
                 'Должность': [input('Должность: ')]}
     return job_dict
 

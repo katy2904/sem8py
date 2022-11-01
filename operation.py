@@ -1,6 +1,4 @@
 import logger as log
-import numpy
-import pandas as pd
 import UI
 import database as db
 
@@ -34,6 +32,7 @@ def new_inf():
 
 def search_inf():
     search_base = db.concat_base('basic.csv', 'job.csv', 'salary.csv')
+    UI.view_data(search_base)
     search_option = UI.search_info()
     match search_option:
         case 1: column, param = 'Фамилия', UI.get_data('Введите фамилию: ')
@@ -44,5 +43,5 @@ def search_inf():
         case 6: column, param = 'Должность', UI.get_data('Введите должность: ')
         case 7: column, param = 'Оклад', UI.get_data('Введите размер оклада: ')
         case 8: column, param = 'Премия', UI.get_data('Введите размер премии: ')
-    log.log_data(f'Поиск данных по запросу{param}')
+    log.log_data(f'Поиск данных по запросу {param}')
     db.search_db(search_base, column, param)
