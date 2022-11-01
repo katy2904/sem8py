@@ -1,4 +1,4 @@
-
+import pandas as pd
 import operation as op
 
 def get_data(text):
@@ -9,7 +9,6 @@ def view_data(data):
 
 
 def choice():
-    view_data('База данных сотрудников предприятия')
     view_data('Возможные действия:\n'
               '   1 - новая запись в справочник\n'
               '   2 - поиск информации по справочнику\n'
@@ -18,24 +17,26 @@ def choice():
     select = op.check_selekt(1, 4)
     return select
 
+
 def data_basic():
     pid = op.ID('basic.csv')
-    basic = {'ID': pid, 'Фамилия': input('Фамилия: '), 'Имя': input('Имя: '), 'Отчество': input('Отчество: '),
-             'Дата рождения': input('Дата рождения: '), 'Телефон': input('Телефон: '),
-             'Домашний адрес': input('Домашний адрес: ')}
-    return basic
+    basic_dict= {'ID': [pid],
+                 'Фамилия': [input('Фамилия: ')], 'Имя': [input('Имя: ')], 'Отчество': [input('Отчество: ')],
+                 'Дата рождения': [input('Дата рождения: ')], 'Телефон': [input('Телефон: ')],
+                 'Домашний адрес': [input('Домашний адрес: ')]}
+    return basic_dict
 
 def data_job():
     pid = op.ID('job.csv')
-    job = {'ID': pid, 'Дата приема на работу': input('Дата приема на работу: '),
-           'Подразжеление(отдел)': input('Подразжеление(отдел): '),
-           'Должность': input('Должность: ')}
-    return job
+    job_dict = {'ID': [pid], 'Дата приема на работу': [input('Дата приема на работу: ')],
+                'Подразжеление(отдел)': [input('Подразжеление(отдел): ')],
+                'Должность': [input('Должность: ')]}
+    return job_dict
 
 def data_salary():
     pid = op.ID('salary.csv')
-    salary = {'ID': pid, 'Оклад': input('Оклад: '), 'Премия': input('Премия: ')}
-    return salary
+    salary_dict = {'ID': [pid], 'Оклад': [input('Оклад: ')], 'Премия': [input('Премия: ')]}
+    return salary_dict
 
 def search_info():
     view_data('Возможные варианты поиска:\n'
@@ -47,5 +48,17 @@ def search_info():
               '   6 - по должности\n'
               '   7 - по окладу\n'
               '   8 - по премии')
-    search = op.check_selekt(1, 7)
-    return search
+    search_var = op.check_selekt(1, 7)
+    return search_var
+
+def resume():
+    view_data('Продолжить работу со справочником?:\n'
+              '   1 - да\n'
+              '   2 - нет\n')
+    select = op.check_selekt(1, 2)
+    match select:
+        case 1: return True
+        case 2:
+            log.log_data('Выход из программы')
+            exit()
+            return False

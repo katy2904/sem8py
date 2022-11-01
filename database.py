@@ -1,15 +1,19 @@
 import pandas as pd
 
-basic = pd.DataFrame(columns = ['ID', 'Фамилия', 'Имя', 'Отчество', 'Дата рождения', 'Телефон', 'Домашний адрес'])
-job = pd.DataFrame(columns = ['ID', 'Дата приема на работу', 'Подразжеление(отдел)', 'Должность'])
-salary = pd.DataFrame(columns = ['ID', 'Оклад', 'Премия'])
+# def create_db():
+#     basic = pd.DataFrame(columns = ['ID', 'Фамилия', 'Имя', 'Отчество', 'Дата рождения', 'Телефон', 'Домашний адрес'])
+#     job = pd.DataFrame(columns = ['ID', 'Дата приема на работу', 'Подразжеление(отдел)', 'Должность'])
+#     salary = pd.DataFrame(columns = ['ID', 'Оклад', 'Премия'])
+#
+#     basic.to_csv('basic.csv')
+#     job.to_csv('job.csv')
+#     salary.to_csv('salary.csv')
 
-basic.to_csv('basic.csv')
-job.to_csv('job.csv')
-salary.to_csv('salary.csv')
+def create_df(data):
+    return pd.DataFrame(data)
 
-def into_db(file, data):
-    data.to_csv(file, mode='a', index_label=False, header=False)
+def into_db(file, df):
+    df.to_csv(file, mode='a', index=False, header=False)
 
 def from_db(file, data):
     data = pd.read_csv(file)

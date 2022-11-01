@@ -26,9 +26,9 @@ def ID(file):
     return id
 
 def new_inf():
-    db.into_db('basic.csv', UI.data_basic())
-    db.into_db('job.csv', UI.data_job())
-    db.into_db('salary.csv', UI.data_salary())
+    db.into_db('basic.csv', db.create_df(UI.data_basic()))
+    db.into_db('job.csv', db.create_df(UI.data_job()))
+    db.into_db('salary.csv', db.create_df(UI.data_salary()))
     log.log_data('Внесены новые данные в базу')
 
 
